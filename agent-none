@@ -3,7 +3,7 @@ pipeline {
 		stages {
 			stage ('cleanworkwpace') {
 				agent {
-					label 'Jenkins-slave1'
+					label 'tomcat-slave1'
 				}
 				steps {
 					cleanWs()
@@ -11,7 +11,7 @@ pipeline {
 			}
 			stage ("git-clone") {
 				agent {
-					label 'Jenkins-slave1'
+					label 'tomcat-slave1'
 				}
 				steps {
 					sh "git clone https://github.com/ValaxyTech/hello-world.git"
@@ -19,7 +19,7 @@ pipeline {
 			}
 			stage ("build-step") {
 				agent {
-					label 'Jenkins-slave1'
+					label 'tomcat-slave1'
 				}
 				steps {
 					sh "mvn -f /home/ec2-user/workspace/pipeline1/hello-world/pom.xml clean install"
@@ -27,7 +27,7 @@ pipeline {
 			}
 			stage ("deploy") {
 				agent {
-					label 'Jenkins-slave1'
+					label 'tomcat-slave1'
 				}
 				steps {
 					sh "rm /home/ec2-user/tomcat-9/webapps/webapp.war"
