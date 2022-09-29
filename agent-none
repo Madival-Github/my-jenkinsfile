@@ -2,7 +2,7 @@ pipeline {
 	agent none
 		stages {
 			stage ('cleanworkwpace') {
-				agent {
+			agent {
 					label 'tomcat-slave1'
 				}
 				steps {
