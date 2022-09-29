@@ -1,7 +1,7 @@
 pipeline {
 	agent { node { label 'tomcat-slave1' } }
 		stages {
-			stage ('cleanworkwpace') {
+			stage ('cleanWorkSpace') {
 				steps {
 					cleanWs()
 				}
