@@ -2,11 +2,17 @@ pipeline {
 	agent any
 		stages {
 			stage ('cleanworkspace') {
+				agent {
+					label 'tomcat-slave1'
+				}
 				steps {
 					cleanWs()
 				}
 			}
 			stage ("git-clone") {
+				agent {
+					label 'tomcat-slave1'
+				}
 				steps {
 					sh "git clone https://github.com/ValaxyTech/hello-world.git"
 				}
@@ -20,6 +26,9 @@ pipeline {
 				}
 			}
 			stage ("deploy") {
+				agent {
+					label 'tomcat-slave1'
+				}
 				steps {
 					sh "rm /home/ec2-user/tomcat-9/webapps/webapp.war"
 					sh "cp /home/ec2-user/workspace/pipeline1/hello-world/webapp/target/webapp.war /home/ec2-user/tomcat-9/webapps/"
