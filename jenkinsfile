@@ -1,5 +1,5 @@
 pipeline {
-	agent { node { label 'tomcat_slave1' } }
+	agent { node { label 'tomcat-slave1' } }
 		stages {
 			stage ('cleanworkwpace') {
 				steps {
